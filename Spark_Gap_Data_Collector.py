@@ -12,7 +12,7 @@ if __name__ == '__main__':
     today = date.today()
 
     save_dir = 'Breakdown_Measurements_LED'
-    sub = f'G0.05mm_V780V_LED100mA{today.month}_{today.day}'
+    sub = f'G0.05mm_V780V_LED20mA_take_2{today.month}_{today.day}'
     dir = os.path.join(save_dir, sub)
     trial = 1
     f_name = os.path.join(dir, f'trial_{trial}.npy')
