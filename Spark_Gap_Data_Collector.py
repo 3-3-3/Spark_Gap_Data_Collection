@@ -11,11 +11,17 @@ if __name__ == '__main__':
     args = sys.argv
     today = date.today()
 
-    save_dir = 'Breakdown_Measurements'
-    sub = f'G0.05mm_V2310V_{today.month}_{today.day}'
+    save_dir = 'Breakdown_Measurements_LED'
+    sub = f'G0.05mm_V780V_LED100mA{today.month}_{today.day}'
     dir = os.path.join(save_dir, sub)
     trial = 1
     f_name = os.path.join(dir, f'trial_{trial}.npy')
+
+
+    try:
+        os.mkdir(save_dir)
+    except:
+        pass
 
 
     try:
