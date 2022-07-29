@@ -43,15 +43,15 @@ def dt_from_measurement_dir(dir):
 
     return d
 
-def dt_hist(dt, v, gap, color, bins):
+def dt_hist(dt, title='????', color='green', bins=70):
     plt.style.use('ggplot')
-    plt.title(f'Discharge Distribution At {v} V and {gap} mm Gap')
+    plt.title(title)
     plt.xlabel('dt (s)')
     plt.ylabel('Count')
     plt.hist(dt,bins=bins,color=color,edgecolor='black')
 
-
-    plt.savefig(f'v{v}_{gap}mm.png')
+    save_string = title.replace(' ', '')
+    plt.savefig(f'{save_string}.png')
     plt.show()
 
 def frames(V, threshold = -0.4):
