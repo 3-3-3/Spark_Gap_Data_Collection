@@ -11,8 +11,8 @@ if __name__ == '__main__':
     args = sys.argv
     today = date.today()
 
-    save_dir = 'Breakdown_Measurements_LED'
-    sub = f'G0.05mm_V780V_LED20mA_take_2{today.month}_{today.day}'
+    save_dir = 'Breakdown_Measurements_LED_Alluminum'
+    sub = f'G0.05mm_V1000V_LED_Pulse_Aluminum_370hz{today.month}_{today.day}'
     dir = os.path.join(save_dir, sub)
     trial = 1
     f_name = os.path.join(dir, f'trial_{trial}.npy')
@@ -38,12 +38,13 @@ if __name__ == '__main__':
     addy = rm.list_resources()[0]
     inst = rm.open_resource(addy)
     inst.timeout = 15000
-    channels = [3,4]
+    channels = [1,3,4]
 
     if len(args) > 1:
         if args[1] == 'verbose':
             print(f'[*] Getting data from channels: {channels}')
             data = get_data_channels(inst, channels=channels)
+            data[0] = data[0] * 160
 
             print(f'[*] Writing data to: {f_name}')
             with open(f_name, 'wb') as f:
@@ -56,7 +57,7 @@ if __name__ == '__main__':
             for channel in data[1:data.shape[0]]:
                 plt.plot(data[0], channel)
                 plt.grid()
-                plt.show()
+            plt.show()
 
     else:
         data = get_data_channels(inst, channels=channels)
