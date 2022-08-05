@@ -33,6 +33,6 @@ Data is collected in measurement directories. Generally, these are further organ
 
 The functions in analysis_functions.py were used in data analysis, and include functions for loading data in useful ways, functions for detecting discharges (relatively large changes in voltage; the user must specifify what constitutes large), spliting collected data into discharge frames, fitting functions, and a veriety of others. 
 
-The jupyter notebooks include the actual data analysis conducted. As Jupyter Notebooks have a tendency to do, it is not super organized, but gets the job done. The notebooks should at least be reproducable in sequential order, which, if I'm being honest, is not always the case with my notebooks (e.g. run cell 31, then cell 15, then all the others skipping cells 15, 16, 45, and 50, but make sure to rerun cell 31). 
+The jupyter notebooks include the actual data analysis conducted. As Jupyter Notebooks have a tendency to do, it is not super organized, but gets the job done. The notebooks should at least be reproducable in sequential order, which, if I'm being honest, is not always the case with my notebooks and is why I try to avoid them (e.g. run cell 31, then cell 15, then all the others skipping cells 15, 16, 45, and 50, but make sure to rerun cell 31). That said, they are just really easy and can be really usefull.
 
 There is some other clutter I should get rid of which is just saved plots etc., and .DS_Store files which I seriously need to remember to add to .gitignore.
