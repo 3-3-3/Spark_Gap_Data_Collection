@@ -11,8 +11,8 @@ if __name__ == '__main__':
     args = sys.argv
     today = date.today()
 
-    save_dir = 'Breakdown_Measurements_LED_Alluminum'
-    sub = f'G0.05mm_V1000V_LED_Pulse_Aluminum_370hz{today.month}_{today.day}'
+    save_dir = 'Avalanche_Transistor'
+    sub = f'Test{today.month}_{today.day}'
     dir = os.path.join(save_dir, sub)
     trial = 1
     f_name = os.path.join(dir, f'trial_{trial}.npy')
