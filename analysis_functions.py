@@ -8,9 +8,8 @@ def gaussian(t, mean, std):
 
 
 def gaussian_from(dt):
-    dt_ms = dt
-    mean = dt_ms.mean()
-    std = dt_ms.std()
+    mean = dt.mean()
+    std = dt.std()
 
     t = np.linspace(mean - 4 * std, mean + 4 * std, 10000)
     return (mean, std, t, gaussian(t, mean, std))
@@ -29,7 +28,6 @@ def rc_basic(t,xi,tau,t0=0):
     xi: applied voltage
     tau: rc
     '''
-
     return xi * (1 - np.exp(-(t-t0) / tau))
 
 def dt(t, V, threshold=-0.4):
