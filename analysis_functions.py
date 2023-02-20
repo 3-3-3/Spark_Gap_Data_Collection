@@ -106,3 +106,74 @@ def frames(V, threshold = -0.4):
         i_2 += 1
 
     return frames
+
+def av_frames(V, threshold=9):
+    frames = []
+    dV = np.diff(V)
+
+    index = 0
+    points = 100
+    DV = 0
+    i = 0
+
+    while i < len(dV):
+        if np.sign(dV[i]) == 1:
+            DV += dV[i]
+
+        else:
+            if np.abs(DV) > threshold:
+                frames.append(V[index : index+points])
+                i += (points - 1)
+
+
+            DV = 0
+            index = i
+
+        i += 1
+    return frames
+
+def av_dt(t,V,threshold=9):
+    dV = np.diff(V)
+    dt = []
+    t_last = 0
+
+    DV = 0
+    i = 0
+
+    for i in range(len(dV)):
+        if np.sign(dV[i]) == 1:
+            DV += dV[i]
+
+        else:
+            if np.abs(DV) > threshold:
+                if t_last != 0:
+                    dt.append(t[i] - t_last)
+                t_last = t[i]
+
+
+            DV = 0
+
+    return np.array(dt)
+
+def av_dt_from_measurement_dir(dir,threshold=9):
+    d = np.array([])
+
+    for file in os.listdir(dir):
+        data = np.load(os.path.join(dir, file), allow_pickle=True)
+        d = np.append(d,av_dt(data[0],data[1],threshold=threshold))
+
+    return d
+
+def t_V_from_measurement_dir(dir):
+    V = np.array([]); t = np.array([])
+
+    for file in os.listdir(dir):
+        data = np.load(os.path.join(dir, file), allow_pickle=True)
+        if t.size > 0:
+            t = np.append(t,data[0][1:-2] + t[-1])
+        else:
+            t = data[0][1:-2]
+
+        V = np.append(V,data[1][1:-2])
+
+    return (t, V)
