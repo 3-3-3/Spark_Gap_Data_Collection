@@ -13,7 +13,7 @@ if __name__ == '__main__':
 
 
     save_dir = 'Avalanche_Transistor'
-    sub = f'35kHZ_14.0V_Circuit1{today.month}_{today.day}'
+    sub = f'80_kHz_R_47_Trig{today.month}_{today.day}'
     dir = os.path.join(save_dir, sub)
     trial = 1
     f_name = os.path.join(dir, f'trial_{trial}.npy')
@@ -37,14 +37,13 @@ if __name__ == '__main__':
     addy = rm.list_resources()[0]
     inst = rm.open_resource(addy)
     inst.timeout = 15000
-    channel = 1
+    channels = [1,2]
 
 
     if len(args) > 1:
         if args[1] == 'verbose':
-            print(f'[*] Getting data from channels: {channel}')
-            data = get_data(inst, points='MAX', channel=channel)
-            data[0] = data[0]
+            print(f'[*] Getting data from channels: {channels}')
+            data = get_data_channels(inst, points='MAX', channels=channels)
 
             print(f'[*] Writing data to: {f_name}')
             with open(f_name, 'wb') as f:
@@ -55,8 +54,10 @@ if __name__ == '__main__':
             print(f'[*] Displaying data')
 
 
-            plt.plot(data[0], data[1],marker='.')
+            plt.plot(data[0], data[1], marker='.',color='pink',label='Out')
+            plt.plot(data[0],data[2],marker='.',color='purple',label='Clock')
             plt.grid()
+            plt.legend()
             plt.show()
 
     else:
