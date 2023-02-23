@@ -107,12 +107,11 @@ def frames(V, threshold = -0.4):
 
     return frames
 
-def av_frames(V, threshold=9):
+def av_frames(V, threshold=9,points=100):
     frames = []
     dV = np.diff(V)
 
     index = 0
-    points = 100
     DV = 0
     i = 0
 
@@ -165,15 +164,16 @@ def av_dt_from_measurement_dir(dir,threshold=9):
     return d
 
 def t_V_from_measurement_dir(dir):
-    V = np.array([]); t = np.array([])
+    V_out = np.array([]); V_in = np.array([]); t = np.array([])
 
     for file in os.listdir(dir):
         data = np.load(os.path.join(dir, file), allow_pickle=True)
         if t.size > 0:
-            t = np.append(t,data[0][1:-2] + t[-1])
+            t = np.append(t,data[0] + t[-1])
         else:
-            t = data[0][1:-2]
+            t = data[0]
 
-        V = np.append(V,data[1][1:-2])
+        V_out = np.append(V_out,data[1])
+        V_in = np.append(V_in,data[2])
 
-    return (t, V)
+    return (t, V_out, V_in)
