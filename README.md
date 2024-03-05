@@ -1,5 +1,5 @@
 # Spark_Gap_Data_Collection
-Repository with code for data collection and analysis on our spark gap expirements. Has code for efficiently loading data from Keyskope 3000-x series oscilliscopes directly to numpy arrays, functions used in data analysis, raw data saved as .npy files, and a few Jupyter Notebooks which were used in data analysis.
+Repository with code for data collection and analysis on our spark gap expirements. Has code for efficiently loading data from Keyscope 3000-x series oscilliscopes directly to numpy arrays, functions used in data analysis, raw data saved as .npy files, and a few Jupyter Notebooks which were used in data analysis.
 
 The code for efficiently getting data from a Keysight 3000-x series oscilliscope to a computer is built using Pyvisa and Keysight IO Libraries Suite software. Unfortunatly, the use of Keysight IO limits usage of the data collection code to Windows and Linux. For information on setting up Keysight IO Libraries Suite software and connecting to an oscilliscope, see the setting up section (Chapter 2) of the [Keysight programming guide](https://www.keysight.com/us/en/assets/9018-06894/programming-guides/9018-06894.pdf?success=true).
 
