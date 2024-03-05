@@ -1,7 +1,7 @@
 # Spark_Gap_Data_Collection
 Repository with code for data collection and analysis on our spark gap expirements. Has code for efficiently loading data from Keyskope 3000-x series oscilliscopes directly to numpy arrays, functions used in data analysis, raw data saved as .npy files, and a few Jupyter Notebooks which were used in data analysis.
 
-The code for efficiently getting data from a Keysight 3000-x series oscilliscope to a computer is built using Pyvisa and Keysight IO Libraries Suite software. This code will likely be useful for future data collection using our Keyscope Oscilliscope, so it might be worth packaging this into its own repository at some point, but I am too lazy right now. Unfortunatly, the use of Keysight IO limits usage of the data collection code to Windows and Linux. For information on setting up Keysight IO Libraries Suite software and connecting to an oscilliscope, see the setting up section (Chapter 2) of the [Keysight programming guide](https://www.keysight.com/us/en/assets/9018-06894/programming-guides/9018-06894.pdf?success=true).
+The code for efficiently getting data from a Keysight 3000-x series oscilliscope to a computer is built using Pyvisa and Keysight IO Libraries Suite software. Unfortunatly, the use of Keysight IO limits usage of the data collection code to Windows and Linux. For information on setting up Keysight IO Libraries Suite software and connecting to an oscilliscope, see the setting up section (Chapter 2) of the [Keysight programming guide](https://www.keysight.com/us/en/assets/9018-06894/programming-guides/9018-06894.pdf?success=true).
 
 Pyvisa can easily be installed with pip:
 
@@ -33,6 +33,4 @@ Data is collected in measurement directories. Generally, these are further organ
 
 The functions in analysis_functions.py were used in data analysis, and include functions for loading data in useful ways, functions for detecting discharges (relatively large changes in voltage; the user must specifify what constitutes large), spliting collected data into discharge frames, fitting functions, and a veriety of others. 
 
-The jupyter notebooks include the actual data analysis conducted. As Jupyter Notebooks have a tendency to do, it is not super organized, but gets the job done. The notebooks should at least be reproducable in sequential order, which, if I'm being honest, is not always the case with my notebooks and is why I try to avoid them (e.g. run cell 31, then cell 15, then all the others skipping cells 15, 16, 45, and 50, but make sure to rerun cell 31). That said, they are just really easy and can be really usefull.
-
-There is some other clutter I should get rid of which is just saved plots etc., and .DS_Store files which I seriously need to remember to add to .gitignore.
+The jupyter notebooks include the actual data analysis conducted.
